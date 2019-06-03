@@ -10,8 +10,11 @@ let server = http.createServer((req, res) =>{
     res.setHeader('Content-Type', 'text/plain');
     let ip = req.connection.remoteAddress
     getCountryName(ip, (data)=> {
-        res.write(JSON.stringify(data))
-        res.end()
+       if(data.country_code2 === 'VN'){
+           res.end('welcome VN');
+       }else{
+           res.end('fb checking');
+       }
     })
 });
 
