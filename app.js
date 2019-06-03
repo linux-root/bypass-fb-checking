@@ -1,4 +1,4 @@
-var {getCountryName} = require('./ipgeo')
+var {getCountryCode} = require('./ipgeo')
 
 let http = require('http');
 const port = 3000;
@@ -9,7 +9,7 @@ let server = http.createServer((req, res) =>{
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
     let ip = req.connection.remoteAddress
-    getCountryName(ip, (data)=> {
+    getCountryCode(ip, (data)=> {
        if(data.country_code2 === 'VN'){
            res.end('welcome VN');
        }else{
